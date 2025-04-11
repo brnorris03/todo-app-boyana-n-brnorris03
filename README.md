@@ -4,7 +4,7 @@ A simple command-line To-Do List application implemented in Python.
 
 ## Installation
 
-1. Clone this repository:
+1. Clone this repository carefully:
    ```bash
    git clone <repository-url>
    cd todo-app
