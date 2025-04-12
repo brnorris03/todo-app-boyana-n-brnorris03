@@ -5,7 +5,12 @@ A simple command-line To-Do List application that allows users to manage tasks.
 
 from typing import List
 
-
+class Task:
+    def __init__(self, description: str, due_date: str = None) -> None:
+        self.description = description
+        self.due_date = due_date
+        self.completed = False
+        
 class Todo:
     """A simple To-Do list application that manages tasks in memory.
 
@@ -15,9 +20,9 @@ class Todo:
 
     def __init__(self) -> None:
         """Initialize a new Todo instance with an empty task list."""
-        self.tasks: List[str] = []
+        self.tasks: List[Task] = []
 
-    def add_task(self, task: str) -> None:
+    def add_task(self, task: Task) -> None:
         """Add a new task to the list.
 
         Args:
@@ -32,8 +37,25 @@ class Todo:
             print(f"Task '{task}' added successfully.")
         else:
             print("Task cannot be empty.")
+            
+    def add_due_date(self, task: str, due_date: str) -> None:
+        """Add a new task with a due date to the list.
 
-    def delete_task(self, task: str) -> None:
+        Args:
+            task: The task description to add.
+            due_date: The due date for the task.
+
+        Note:
+            Prints a success message if the task is added,
+            or an error message if the task is empty.
+        """
+        if task and due_date:
+            self.tasks.append(f"{task} (Due: {due_date})")
+            print(f"Task '{task}' with due date '{due_date}' added successfully.")
+        else:
+            print("Task and due date cannot be empty.")
+
+    def delete_task(self, task: Task) -> None:
         """Delete a task from the list.
 
         Args:
